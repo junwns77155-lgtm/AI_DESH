@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1부터 a까지 합</title>
+<style>
+  body { font-family: sans-serif; max-width: 420px; margin: 60px auto; padding: 0 16px; }
+  input { font-size: 18px; padding: 6px; width: 140px; }
+  button { font-size: 18px; padding: 6px 14px; cursor: pointer; }
+  #result { margin-top: 20px; font-size: 22px; font-weight: bold; }
+</style>
+</head>
+<body>
+  <h2>1부터 a까지 모두 더하기</h2>
+  <input type="number" id="a" min="1" placeholder="숫자 a">
+  <button onclick="calc()">계산</button>
+  <div id="result"></div>
+
+<script>
+  function calc() {
+    const a = parseInt(document.getElementById("a").value);
+    const result = document.getElementById("result");
+    if (isNaN(a) || a < 1) {
+      result.textContent = "1 이상의 정수를 입력하세요.";
+      return;
+    }
+    let sum = 0;
+    for (let i = 1; i <= a; i++) {
+      sum += i;
+    }
+    result.textContent = "1 + 2 + ... + " + a + " = " + sum;
+  }
+
+  // 엔터 키로도 계산
+  document.getElementById("a").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") calc();
+  });
+</script>
+</body>
+</html>
